@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package simpletabletest;
+
+import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JComponent;
+import java.util.*;
+public class SimpleTableTest 
+        
+   extends JFrame 
+{
+	private static final long serialVersionUID = 1L;
+        ImageIcon icon1 = new ImageIcon("images/2.jpg");
+        ImageIcon icon2 = new ImageIcon("images/2.jpg");
+        private JLabel label1;
+	private Object[][] array = new String[][] {{ "RB20E" , "120", "10-15 л." },{ "RB20DE"  , "150", "12-17 л." },{ "RB25DET", "250" , "15-25 л." }};
+        private Object[][] array1 = new String[][] {{ "Medalist" , "Бежевый, серый", "от 1500000 йен" },{ "Medalist Extra"  , "Бежевый, серый, чёрный, синий", "от 1700000 йен" },{ "Medalist TURBO", "Красный, чёрный, синий" , "от 2000000 йен" }};
+	private Object[] columnsHeader = new String[] {"Двигатель", "Мощность, лс.", "Расход топлива на 100 км."};
+        private Object[] columnsHeader1 = new String[] {"Комплектация", "Доступные цвета", "Цена"};
+        
+	public SimpleTableTest() 
+{
+		super("Сравнительная таблица двигателей и комплектаций");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+                
+		JTable table1 = new JTable(array, columnsHeader);
+		JTable table2 = new JTable(array1, columnsHeader1);
+		table2.setRowHeight(30);
+		table2.setIntercellSpacing(new Dimension(10, 10));
+		table2.setGridColor(Color.black);
+                label1 = new JLabel(icon1);
+                
+		Box contents = new Box(BoxLayout.Y_AXIS);
+                contents.add(label1);
+                label1.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		contents.add(new JScrollPane(table1));
+                contents.add(new JScrollPane(table2));
+		
+		setContentPane(contents);
+		setSize(700, 500);
+		setVisible(true); 
+}
+}
